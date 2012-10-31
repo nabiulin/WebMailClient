@@ -1,0 +1,25 @@
+<table class="table table-striped" id="mails">
+    <thead>
+    <tr>
+        <th>&nbsp;</th>
+        <th colspan="2">
+            <input type="button" class="btn btn-primary" value="Mark all as read" ng-click="markRead()"/>
+            <input type="button" class="btn btn-primary" value="Remove" />
+        </th>
+    </tr>
+    <tr>
+        <th>&nbsp;</th>
+        <th>From</th>
+        <th>Theme</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="mail in mails" ng-class="{'new': mail.isNew == 1}">
+            <td><input type="checkbox" value="" name="mail-{{mail.id}}"/></td>
+            <td><a href="#/view/{{mail.id}}">{{mail.from}} - {{mail.email}}</a></td>
+            <td><a href="#/view/{{mail.id}}">{{mail.theme}}</a></td>
+        </tr>
+    </tbody>
+</table>
+
+
