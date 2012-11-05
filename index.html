@@ -13,33 +13,34 @@
     <script type="text/javascript" src="js/controllers/MailController.js"></script>
 </head>
 <body>
-<div class="container" ng-app="webmail">
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="">WebMailClient</a>
+    <div class="container" ng-app="webmail">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="">WebMailClient</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span2">
-                <ul class="nav nav-list">
-                    <li ng-class="{'active': 'inbox' == currentPage}">
-                        <a ng-click="currentPage = 'inbox'" href="#/show/inbox">Inbox</a>
-                    </li>
-                    <li ng-class="{'active': 'sent' == currentPage}">
-                        <a ng-click="currentPage='sent'" href="#/show/sent">Sent</a>
-                    </li>
-                    <li ng-class="{'active': 'drafts' == currentPage}">
-                        <a ng-click="currentPage='drafts'" href="#/show/drafts">Drafts</a>
-                    </li>
-                    <li ng-class="{'active': 'trash' == currentPage}">
-                        <a ng-click="currentPage='trash'" href="#/show/trash">Trash</a>
-                    </li>
-                </ul>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span2">
+                    <ul class="nav nav-list">
+                        <li ng-class="{'active': 'inbox' == currentPage}" ng-controller="MailController">
+                            <a ng-click="currentPage = 'inbox'" href="#/show/inbox">Inbox({{unread()}})</a>
+                        </li>
+                        <li ng-class="{'active': 'sent' == currentPage}">
+                            <a ng-click="currentPage='sent'" href="#/show/sent">Sent</a>
+                        </li>
+                        <li ng-class="{'active': 'drafts' == currentPage}">
+                            <a ng-click="currentPage='drafts'" href="#/show/drafts">Drafts</a>
+                        </li>
+                        <li ng-class="{'active': 'trash' == currentPage}">
+                            <a ng-click="currentPage='trash'" href="#/show/trash">Trash</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="span10" ng-view></div>
             </div>
-            <div class="span10" ng-view></div>
         </div>
     </div>
 </body>
