@@ -14,6 +14,14 @@ function MailController($scope, $routeParams) {
     $scope.mails = self.mails;
 
     /**
+     * Mark button as disabled
+     * @return {String}
+     */
+    $scope.disableButton = function() {
+        return type == INBOX_MAILS ? '' : 'disabled';
+    };
+
+    /**
      * Mark all mails as read
      */
     $scope.markRead = function() {
@@ -30,13 +38,17 @@ function MailController($scope, $routeParams) {
      */
     $scope.remove = function() {
         var elements = self.getChecked();
-        angular.forEach(elements, function(element){
-            angular.forEach(self.mails, function(mail){
-                if ($(element).data('id') == mail.id) {
-                    self.mails.splice(self.mails.indexOf(mail), 1);
-                }
-            })
-        });
+        if (elements.length == 0) {
+            self.mails.splice(0, self.mails.length);
+        } else {
+            angular.forEach(elements, function(element){
+                angular.forEach(self.mails, function(mail){
+                    if ($(element).data('id') == mail.id) {
+                        self.mails.splice(self.mails.indexOf(mail), 1);
+                    }
+                })
+            });
+        }
     };
 
     /**
@@ -51,7 +63,7 @@ function MailController($scope, $routeParams) {
             });
         }
         return count;
-    }
+    };
 }
 
 MailController.prototype = {
