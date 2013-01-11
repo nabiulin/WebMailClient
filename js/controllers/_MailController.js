@@ -1,13 +1,15 @@
 var INBOX_MAILS = 'inbox';
-var TRASH_MAILS = 'trash';
 var IS_NEW_MAIL = 1;
-
+/**
+ * Inbox controller
+ * @constructor
+ */
 function MailController($scope, $routeParams) {
+    var self = this;
     var type = $routeParams.type;
     self.mails = mails;
     if (type && mails[type]) {
         self.mails = mails[type];
-        console.log(type);
     }
     $scope.mails = self.mails;
 
@@ -57,17 +59,19 @@ function MailController($scope, $routeParams) {
         var count = 0;
         if (self.mails[INBOX_MAILS]) {
             angular.forEach(self.mails[INBOX_MAILS], function(value){
-                count += value.isNew == IS_NEW_MAIL ? 1 : 0;
+                 count += value.isNew == IS_NEW_MAIL ? 1 : 0;
             });
         }
         return count;
     };
+}
 
+MailController.prototype = {
     /**
      * Get checked items
      * @return {*}
      */
-    self.getChecked = function() {
+    getChecked: function() {
         var elements = $('#mails').find('input[type="checkbox"]:checked');
         if (!elements) {
             return {};

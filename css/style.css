@@ -1,7 +1,14 @@
 .new {
     font-weight: bold;
-
 }
 .new a {
     color: #46DDF1;
 }
+
+.mailLbl {
+    width: 25px;
+}
+.mailFld input, .mailFld textarea {
+    width: 100%;
+}
+

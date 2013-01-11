@@ -3,19 +3,20 @@
     <tr>
         <th>&nbsp;</th>
         <th colspan="2">
+            <a class="btn btn-info" href="#/create">Create<a/>
             <input type="button" class="btn btn-primary" value="Mark all as read" ng-click="markRead()" disabled="{{disableButton()}}"/>
             <input type="button" class="btn btn-primary" value="Remove" ng-click="remove()"/>
         </th>
     </tr>
     <tr>
-        <th>&nbsp;</th>
+        <th><input type="checkbox" ng-model="mailModel"></th>
         <th>From</th>
         <th>Theme</th>
     </tr>
     </thead>
     <tbody>
         <tr ng-repeat="mail in mails" ng-class="{'new': mail.isNew == 1}">
-            <td><input type="checkbox" value="" name="items[]" data-id="{{mail.id}}"/></td>
+            <td><input type="checkbox" value="" name="items[]" data-id="{{mail.id}}" ng-model="mailModel"/></td>
             <td><a href="#/view/{{mail.id}}">{{mail.from}} - {{mail.email}}</a></td>
             <td><a href="#/view/{{mail.id}}">{{mail.theme}}</a></td>
         </tr>
