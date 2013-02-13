@@ -10,6 +10,7 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/data.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers/AppController.js"></script>
     <script type="text/javascript" src="js/controllers/MailController.js"></script>
 </head>
 <body>
@@ -24,7 +25,7 @@
         <div class="container-fluid">
             <div class="row-fluid">
                 <div class="span2">
-                    <ul class="nav nav-list" ng-controller="MailController">
+                    <ul class="nav nav-list" ng-controller="AppController">
                         <li ng-class="{'active': 'inbox' == currentPage}">
                             <a ng-click="currentPage = 'inbox'" href="#/show/inbox">Inbox({{unread()}})</a>
                         </li>

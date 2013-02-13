@@ -1,0 +1,28 @@
+<table class="table" id="mail">
+    <thead>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <input type="button" class="btn btn-info" value="Reply"/>
+                <input type="button" class="btn btn-primary" value="Remove"/>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="mailLbl">From</td>
+            <td class="mailFld"><span>{{mail.from}}</span></td>
+        </tr>
+        <tr>
+            <td class="mailLbl">Subject</td>
+            <td class="mailFld"><span>{{mail.theme}}</span></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="mailFld">
+                <textarea name="mailText" cols="80" rows="10">{{mail.content}}</textarea>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+

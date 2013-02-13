@@ -1,77 +1,16 @@
-var INBOX_MAILS = 'inbox';
-var TRASH_MAILS = 'trash';
-var IS_NEW_MAIL = 1;
-
 function MailController($scope, $routeParams) {
     var type = $routeParams.type;
-    self.mails = mails;
-    if (type && mails[type]) {
-        self.mails = mails[type];
-        console.log(type);
-    }
-    $scope.mails = self.mails;
+    var mailId = $routeParams.mailId;
 
-    /**
-     * Mark button as disabled
-     * @return {String}
-     */
-    $scope.disableButton = function() {
-        return type == INBOX_MAILS ? '' : 'disabled';
-    };
-
-    /**
-     * Mark all mails as read
-     */
-    $scope.markRead = function() {
-        angular.forEach(self.mails, function(value){
-            if (value.isNew) {
-                value.isNew = 0;
-            }
-        });
-        $scope.unread = 0;
-    };
-
-    /**
-     * Remove checked mails
-     */
-    $scope.remove = function() {
-        var elements = self.getChecked();
-        if (elements.length == 0) {
-            self.mails.splice(0, self.mails.length);
-        } else {
-            angular.forEach(elements, function(element){
-                angular.forEach(self.mails, function(mail){
-                    if ($(element).data('id') == mail.id) {
-                        self.mails.splice(self.mails.indexOf(mail), 1);
-                    }
-                })
+    if (mailData[type]) {
+        var keepGoing = true;
+        if (keepGoing) {
+            angular.forEach(mailData[type], function(mail) {
+                if (mail.id == mailId) {
+                    $scope.mail = mail;
+                    keepGoing = false;
+                }
             });
         }
-    };
-
-    /**
-     * Get count of unread mails
-     * @return {Number}
-     */
-    $scope.unread = function() {
-        var count = 0;
-        if (self.mails[INBOX_MAILS]) {
-            angular.forEach(self.mails[INBOX_MAILS], function(value){
-                count += value.isNew == IS_NEW_MAIL ? 1 : 0;
-            });
-        }
-        return count;
-    };
-
-    /**
-     * Get checked items
-     * @return {*}
-     */
-    self.getChecked = function() {
-        var elements = $('#mails').find('input[type="checkbox"]:checked');
-        if (!elements) {
-            return {};
-        }
-        return elements
     }
 }
